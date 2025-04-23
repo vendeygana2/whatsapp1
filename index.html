@@ -7,74 +7,96 @@
     <style>
         body {
             font-family: sans-serif;
-            margin: 20px;
+            margin: 0;
+            background-image: url('https://i.pinimg.com/originals/86/ea/57/86ea570c55c1496f368b7a6794215f22.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .frame {
+            background-color: black;
+            padding: 20px; /* Espacio alrededor de la ventana principal */
+            border-radius: 10px; /* Bordes redondeados para el marco */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para el marco */
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
-            text-align: center; /* Centrar el contenedor */
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
         .header-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .header-container img {
-            max-height: 50px; /* Ajusta el tamaño de los logos */
-            margin: 0 10px; /* Espacio entre los logos y el título */
+            max-height: 50px;
+            margin: 0 10px;
         }
         h2 {
             margin-top: 0;
         }
         textarea {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
         }
         button {
-            padding: 10px 20px;
-            background-color: #25D366; /* Color verde de WhatsApp */
+            padding: 12px 25px;
+            background-color: #25D366;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #128C7E; /* Verde más oscuro al pasar el mouse */
+            background-color: #128C7E;
         }
         #mensaje-generado {
-            white-space: pre-wrap; /* Respeta los saltos de línea */
+            white-space: pre-wrap;
             margin-top: 20px;
             padding: 15px;
             border: 1px solid #eee;
             border-radius: 4px;
             background-color: #f9f9f9;
-            text-align: left; /* Alinear el texto del mensaje a la izquierda */
+            text-align: left;
         }
         #frase-motivacional {
             margin-top: 15px;
             font-style: italic;
             color: #555;
-            text-align: center; /* Centrar la frase motivacional */
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-container">
-            <img src="https://www.vendeygana.net/assets/img/logo-1.png" alt="Logo Vende y Gana">
-            <h2>GENERADOR DE MENSAJE DE WHATSAPP DE CUENTAS</h2>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="Logo WhatsApp">
+    <div class="frame">
+        <div class="container">
+            <div class="header-container">
+                <img src="https://www.vendeygana.net/assets/img/logo-1.png" alt="Logo Vende y Gana">
+                <h2>GENERADOR DE MENSAJE DE WHATSAPP DE CUENTAS</h2>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="Logo WhatsApp">
+            </div>
+            <textarea id="datos-cuenta" rows="5" placeholder="DATOS DE SU PANTALLA NETFLIX: CORREO: angiangan17@gcatower.com CLAVE: g1902492 Perfil: 1 PIN: 2064"></textarea>
+            <button onclick="generarMensaje()">Generar y Copiar Mensaje</button>
+            <div id="mensaje-generado" style="display: none;"></div>
+            <div id="frase-motivacional" style="display: none;"></div>
         </div>
-        <textarea id="datos-cuenta" rows="5" placeholder="DATOS DE SU PANTALLA NETFLIX: CORREO: angiangan17@gcatower.com CLAVE: g1902492 Perfil: 1 PIN: 2064"></textarea>
-        <button onclick="generarMensaje()">Generar y Copiar Mensaje</button>
-        <div id="mensaje-generado" style="display: none;"></div>
-        <div id="frase-motivacional" style="display: none;"></div>
     </div>
 
     <script>
@@ -148,7 +170,7 @@
             // Copiar al portapapeles (incluyendo la frase motivacional)
             const mensajeCompleto = mensaje + "\n\n" + fraseMotivacional;
             navigator.clipboard.writeText(mensajeCompleto).then(() => {
-                alert("¡Mensaje con ambos logos y frase copiado al portapapeles!");
+                alert("¡Mensaje con fondo, marco negro, logos y frase copiado al portapapeles!");
             }).catch(err => {
                 console.error('Error al copiar al portapapeles: ', err);
                 alert("No se pudo copiar el mensaje al portapapeles. Por favor, selecciónalo y cópialo manualmente.");
